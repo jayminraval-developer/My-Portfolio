@@ -1,0 +1,418 @@
+/* AboutMe Section with Background Animation */
+.about {
+  padding: 60px 20px;
+  background: radial-gradient(circle, rgba(40, 44, 52, 0.8), rgba(109, 0, 20, 0.8)); /* Dark to maroon with opacity for better contrast */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundAnimation 10s ease-in-out infinite;
+  color: white; /* Ensure text is white for contrast */
+}
+
+/* Keyframes for Background Animation */
+@keyframes backgroundAnimation {
+  0% {
+    background: radial-gradient(circle, rgba(40, 44, 52, 0.8), rgba(109, 0, 20, 0.8));
+  }
+  50% {
+    background: radial-gradient(circle, rgba(109, 0, 20, 0.8), rgba(40, 44, 52, 0.8));
+  }
+  100% {
+    background: radial-gradient(circle, rgba(40, 44, 52, 0.8), rgba(109, 0, 20, 0.8));
+  }
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding-bottom: 40px;
+  animation: fadeIn 2s ease-out;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #fff; /* White text */
+  animation: typing 3s steps(30) 1s forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.hero .tagline {
+  font-size: 1.5rem;
+  color: #00FFE7; /* Aqua accent for tagline */
+  font-style: italic;
+  opacity: 0;
+  animation: fadeIn 2s ease-in 4s forwards;
+}
+
+/* Keyframes for Typing Effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Keyframes for Fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Introduction Section */
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  color: #eee; /* Light grey color for paragraph */
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Journey Timeline */
+.timeline {
+  margin-bottom: 40px;
+}
+
+.timeline h2 {
+  font-size: 2rem;
+  color: #fff; /* White text */
+  margin-bottom: 20px;
+}
+
+.journey-timeline ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.journey-timeline ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #ddd; /* Light grey color for timeline items */
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideIn 1s forwards;
+  animation-delay: var(--delay);
+}
+
+/* Keyframes for Slide-in */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Skills Section */
+.skills {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative; /* Ensures correct positioning of child elements */
+}
+
+/* Skills Heading */
+.skills h2 {
+  font-size: 2rem;
+  color: #333; /* Dark color for better contrast */
+  margin-bottom: 20px; /* Space between heading and skill items */
+  opacity: 1;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0s; /* No delay for heading animation */
+}
+
+/* Keyframes for Fade-in Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skills List Container */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px; /* Ensures there’s space between heading and skill items */
+}
+
+
+
+/* Skill Item */
+
+
+
+/* AboutMe Section with Animated Background Gradient */
+.about {
+  padding: 60px 20px;
+  background: linear-gradient(45deg, #282c34, #6d0014); /* Default background gradient */
+  background-size: 400% 400%; /* This makes the gradient larger than the container to animate */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Animated background */
+}
+
+/* Keyframes for Animated Background */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(45deg, #282c34, #6d0014);
+  }
+  25% {
+    background: linear-gradient(45deg, #6d0014, #3b0a45); /* Dark purple */
+  }
+  50% {
+    background: linear-gradient(45deg, #3b0a45, #2a3d66); /* Blue */
+  }
+  75% {
+    background: linear-gradient(45deg, #2a3d66, #282c34);
+  }
+  100% {
+    background: linear-gradient(45deg, #282c34, #6d0014); /* Back to original colors */
+  }
+}
+
+/* Skills Section */
+.skills {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Skills Heading */
+.skills h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  opacity: 1;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0s; /* No delay for heading animation */
+}
+
+/* Keyframes for Fade-in Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* AboutMe Section with Animated Background Gradient */
+.about {
+  padding: 60px 20px;
+  background: linear-gradient(45deg, #282c34, #6d0014); /* Default background gradient */
+  background-size: 400% 400%; /* This makes the gradient larger than the container to animate */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Animated background */
+}
+
+/* Keyframes for Animated Background */
+@keyframes backgroundAnimation {
+  0% {
+    background: linear-gradient(45deg, #282c34, #6d0014);
+  }
+  25% {
+    background: linear-gradient(45deg, #6d0014, #3b0a45); /* Dark purple */
+  }
+  50% {
+    background: linear-gradient(45deg, #3b0a45, #2a3d66); /* Blue */
+  }
+  75% {
+    background: linear-gradient(45deg, #2a3d66, #282c34);
+  }
+  100% {
+    background: linear-gradient(45deg, #282c34, #6d0014); /* Back to original colors */
+  }
+}
+
+/* Skills Section */
+.skills {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  padding: 40px 0; /* Add some padding for a more spacious look */
+  z-index: 1;
+}
+
+/* Skills Heading */
+.skills h2 {
+  font-size: 2.5rem;
+  color: #FE621D; /* Orange accent color */
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0s; /* No delay for heading animation */
+}
+
+/* Fade In Up animation for skills heading */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skills List Container */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Skill Item */
+.skill-item {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 25px;
+  margin: 10px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  background-color: #FE621D; /* Change color on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Slight shadow on hover */
+}
+
+/* Sequential Fade In for skill items */
+.skill-item:nth-child(1) {
+  animation-delay: 1s;
+}
+.skill-item:nth-child(2) {
+  animation-delay: 1.2s;
+}
+.skill-item:nth-child(3) {
+  animation-delay: 1.4s;
+}
+.skill-item:nth-child(4) {
+  animation-delay: 1.6s;
+}
+.skill-item:nth-child(5) {
+  animation-delay: 1.8s;
+}
+.skill-item:nth-child(6) {
+  animation-delay: 2s;
+}
+
+/* Animation for skills list appearing */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* Personal Information Section */
+.personal-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.personal-info h2 {
+  font-size: 2rem;
+  color: #fff; /* White text */
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.info {
+  font-size: 1.1rem;
+  color: #ddd; /* Light grey text */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+.info:hover {
+  transform: scale(1.05); /* Slight grow effect on hover */
+  transition: transform 0.3s ease;
+}
+
+/* Keyframes for Fade-in Up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Call to Action Section */
+.cta {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.cta a {
+  color: #FE621D;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.cta a:hover {
+  color: #00FFE7; /* Aqua color on hover */
+}

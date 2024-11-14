@@ -1,0 +1,131 @@
+/* Contact Page Styling */
+.contact {
+    padding: 60px 40px; /* Add space to the left and right of the container */
+    text-align: center;
+    background-color: #282c34; /* Default background color */
+    color: white;
+    animation: backgroundAnimation 10s ease-in-out infinite; /* Apply background animation */
+    position: relative; /* To ensure elements are positioned correctly */
+  }
+  
+  @keyframes backgroundAnimation {
+    0% {
+      background-color: #282c34; /* Dark background */
+    }
+    50% {
+      background-color: #6d0014; /* Maroon color */
+    }
+    100% {
+      background-color: #282c34; /* Dark background */
+    }
+  }
+  /* Contact page heading */
+  .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Form Group Styling */
+  .form-group {
+    margin-bottom: 25px;
+    text-align: center; /* Center labels and inputs */
+    display: flex;
+    flex-direction: column; /* Stack labels and inputs vertically */
+    align-items: center; /* Center content horizontally */
+  }
+  
+  /* Label Styling */
+  .form-group label {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 8px; /* Space between label and input */
+    text-align: center;
+  }
+  
+  /* Input fields and textarea */
+  .form-group input,
+  .form-group textarea {
+    width: 100%;  /* Ensures that input fields take full width of their parent */
+    max-width: 400px; /* Set a max width to make it shorter */
+    padding: 12px;
+    font-size: 1rem;
+    margin-top: 8px;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    background-color: #ffffff30; /* Transparent white background */
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  
+  /* Input and textarea focus effect */
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #00ffe7; /* Glow effect on focus */
+    background-color: #ffffff80; /* Slightly more opaque on focus */
+  }
+  
+  /* Submit button with hover effect */
+  .submit-btn {
+    background-color: #00ffe7;
+    color: #333;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+    width: 200px; /* Fixed width for the submit button */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Submit button hover effect */
+  .submit-btn:hover {
+    background-color: #00b4d8;
+    transform: scale(1.05);
+  }
+  
+  /* Success message */
+  .success-message {
+    margin-top: 20px;
+    color: #00ffe7;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  /* Removed hover effect for background change */
+  .contact:hover {
+    background: #282c34; /* Keep the same background color */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Keep the same shadow on hover */
+    transform: none; /* Removed the transform lift effect */
+    transition: none; /* Removed transition effects for hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .contact {
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+  
+    .contact h2 {
+      font-size: 2rem;
+    }
+  
+    /* Ensure the input fields and textareas are responsive */
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      max-width: none; /* Remove any max-width on smaller screens */
+    }
+  
+    .submit-btn {
+      width: 100%; /* Make the submit button full width on smaller screens */
+    }
+  }
+  
