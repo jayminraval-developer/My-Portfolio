@@ -3,15 +3,14 @@ import React, { useEffect } from "react";
 import "./App.css";
 import "font-awesome/css/font-awesome.min.css";
 
-// Import AOS
+// Import AOS (if you plan to use it for animations)
 // import AOS from 'aos';
-// Import AOS CSS
+// Import AOS CSS (if you plan to use it)
 // import 'aos/dist/aos.css';
 
-// import React from 'react';
 import Header from "./components/Header"; // Header component
 import AboutMe from "./components/AboutMe"; // AboutMe component
-import Skills from "./components/Skills"; // Skills component
+// import Skills from "./components/Skills"; // Skills component
 import Projects from "./components/Projects"; // Projects component
 import Contact from "./components/Contact"; // Contact component
 import Footer from "./components/Footer"; // Import Footer component
@@ -27,8 +26,8 @@ function App() {
         <AboutMe /> {/* AboutMe component */}
       </section>
       {/* <section id="skills">
-        <Skills /> { Skills component }
-      </section>   */}
+        <Skills /> {/* Skills component }
+      </section> */}
       <section id="projects">
         <Projects /> {/* Projects component */}
       </section>

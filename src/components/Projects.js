@@ -1,80 +1,98 @@
 // src/components/Projects.js
-import React, { useEffect } from 'react';
-import { FaCode, FaLaptopCode, FaBook, FaFilm } from 'react-icons/fa'; // Movie icon added here
-import './Projects.css'; // Import your CSS file
+import React, { useState } from 'react';
+import { FaCode, FaLaptopCode, FaBook, FaFilm, FaTimes } from 'react-icons/fa';
+import './Projects.css'; // Ensure you have appropriate CSS styling
 
 const projects = [
   {
     title: 'Portfolio Website',
     description: 'This portfolio website where you can see my work and skills.',
-    icon: <FaLaptopCode size={40} color="#007bff" />, // Laptop code icon
-    link: '#', // Replace with actual link if available
+    icon: <FaLaptopCode size={40} color="#007bff" />,
+    fullDescription: 'A dynamic portfolio website built using React.js.',
+    githubLink: 'https://github.com/yourusername/portfolio',
+    liveDemoLink: 'https://your-portfolio-live.com',
   },
   {
     title: 'Online Attendance System',
     description: 'A Java-based system to manage attendance for schools and colleges.',
-    icon: <FaCode size={40} color="#28a745" />, // Code icon
-    link: '#', // Replace with actual link if available
+    icon: <FaCode size={40} color="#28a745" />,
+    fullDescription: 'Manage student attendance using Java and MySQL.',
+    githubLink: 'https://github.com/yourusername/attendance-system',
   },
   {
     title: 'Library Management System',
     description: 'A Java-based system for managing books in a library.',
-    icon: <FaBook size={40} color="#ffc107" />, // Book icon
-    link: '#', // Replace with actual link if available
+    icon: <FaBook size={40} color="#ffc107" />,
+    fullDescription: 'Helps libraries manage book checkouts, returns, and availability.',
+    githubLink: 'https://github.com/yourusername/library-management',
   },
   {
     title: 'Blog Website',
     description: 'A dynamic blog platform where users can post and comment.',
-    icon: <FaCode size={40} color="#dc3545" />, // Code icon
-    link: '#', // Replace with actual link if available
+    icon: <FaCode size={40} color="#dc3545" />,
+    fullDescription: 'Built with PHP and MySQL for blogging and commenting.',
+    githubLink: 'https://github.com/yourusername/blog-website',
   },
   {
     title: 'The Movie Review App (IMDb Clone)',
-    description: 'Build a seamless Movie Review App using React for the frontend and ASP.NET MVC for the backend, providing users with movie details, ratings, and reviews.',
-    icon: <FaFilm size={40} color="#f39c12" />, // Movie icon
-    link: '#', // Add the actual link to the project
+    description: 'A movie review app using React and ASP.NET MVC.',
+    icon: <FaFilm size={40} color="#f39c12" />,
+    fullDescription: 'Rate and review movies using React.js frontend and ASP.NET MVC backend.',
+    githubLink: 'https://github.com/yourusername/movie-review-app',
+    liveDemoLink: 'https://your-movie-app-live.com',
   },
 ];
 
 function Projects() {
-  useEffect(() => {
-    // Scroll-based background color change (if needed)
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = (scrollY / pageHeight) * 100;
+  const [selectedProject, setSelectedProject] = useState(null);
 
-      if (scrollPercentage < 50) {
-        document.body.style.backgroundColor = 'rgb(54, 162, 235)'; // Blue color
-      } else {
-        document.body.style.backgroundColor = 'rgb(75, 192, 192)'; // Greenish color
-      }
-    };
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+  };
 
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
 
   return (
     <section className="projects">
-      <h2>Projects</h2>
+      <h2>My Projects</h2>
       <div className="project-list">
         {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <div className="project-icon">
-              {project.icon}
-            </div>
+          <div
+            key={index}
+            className="project-card"
+            onClick={() => handleProjectClick(project)}
+          >
+            <div className="project-icon">{project.icon}</div>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">
-              View Project
-            </a>
+            <button className="view-project-btn">View Project</button>
           </div>
         ))}
       </div>
+
+      {selectedProject && (
+        <div className="project-modal" onClick={closeModal}>
+          <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closeModal}>
+              <FaTimes size={20} />
+            </button>
+            <h3>{selectedProject.title}</h3>
+            <p>{selectedProject.fullDescription}</p>
+            {selectedProject.githubLink && (
+              <a href={selectedProject.githubLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                View on GitHub
+              </a>
+            )}
+            {selectedProject.liveDemoLink && (
+              <a href={selectedProject.liveDemoLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
