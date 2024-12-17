@@ -25,7 +25,6 @@ body {
   color: white;
 }
 
-/* Keyframes for Animated Background */
 @keyframes backgroundAnimation {
   0%,
   100% {
@@ -46,11 +45,10 @@ body {
 .hero {
   text-align: center;
   padding-bottom: 40px;
-  animation: fadeIn 2s ease-out;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #fff;
   animation: typing 3s steps(30) 1s forwards;
   white-space: nowrap;
@@ -58,14 +56,13 @@ body {
 }
 
 .hero .tagline {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #00ffe7;
   font-style: italic;
   opacity: 0;
   animation: fadeIn 2s ease-in 4s forwards;
 }
 
-/* Keyframes for Typing Effect */
 @keyframes typing {
   from {
     width: 0;
@@ -75,7 +72,6 @@ body {
   }
 }
 
-/* Keyframes for Fade-in */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -92,7 +88,7 @@ body {
 }
 
 .intro p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #eee;
   line-height: 1.6;
   max-width: 800px;
@@ -124,7 +120,6 @@ body {
   color: #ddd;
 }
 
-/* Timeline entry sliding effect */
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -136,7 +131,6 @@ body {
   }
 }
 
-/* Timeline point (circle) */
 .timeline-point {
   position: absolute;
   left: -15px;
@@ -147,22 +141,6 @@ body {
   background-color: #ff9800;
   border-radius: 50%;
   box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.6);
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-  .journey-timeline {
-    padding: 20px;
-  }
-
-  .journey-timeline ul li {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
-
-  .timeline-point {
-    left: -10px;
-  }
 }
 
 /* Personal Information Section */
@@ -184,173 +162,95 @@ body {
 }
 
 .info {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #ddd;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s ease-out forwards;
 }
 
-
-
 /* Skills Section */
 .skills {
   text-align: center;
   padding: 40px 30px;
   border-radius: 20px;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); 
   max-width: 1480px;
   width: 100%;
   position: relative;
-  overflow: hidden; /* Hide anything outside the container */
-  background-color: transparent; /* Removed white background */
+  overflow: hidden;
+  background-color: transparent;
 }
 
-/* Skills List Container (for continuous horizontal scroll) */
 .skills-list {
   display: flex;
   gap: 20px;
-  animation: scrollSkills 8s linear infinite; /* Continuous left-to-right scroll */
-  will-change: transform; /* Smooth rendering */
-  white-space: nowrap; /* Prevent wrapping */
-  justify-content: flex-start; /* Ensure items are aligned */
+  animation: scrollSkills 8s linear infinite;
+  white-space: nowrap;
+  justify-content: flex-start;
 }
 
-/* Keyframe animation for continuous scroll from left to right */
 @keyframes scrollSkills {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); /* Scroll the list completely */
+    transform: translateX(-100%);
   }
 }
 
-/* Skill Item */
 .skill-item {
-  color: rgba(34, 45, 205, 0.992); /* Text color */
+  color: rgba(34, 45, 205, 0.992);
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
   transition: transform 0.3s ease, opacity 0.3s ease;
   cursor: pointer;
-  padding: 20px 25px; /* Adjust padding */
+  padding: 20px 25px;
   margin: 0;
   text-transform: capitalize;
   font-family: "Arial", sans-serif;
   display: inline-block;
-  opacity: 0.9; /* Slightly reduced opacity */
-  background-color: #ffffff; /* Dark background */
-  border-radius: 10px; /* Rounded corners */
+  opacity: 0.9;
+  background-color: #ffffff;
+  border-radius: 10px;
   position: relative;
 }
 
-/* Skill Item Icons using Font Awesome */
-.skill-item.java {
-  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/svgs/brands/java.svg");
-  background-size: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.skill-item.javascript {
-  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/svgs/brands/js-square.svg");
-  background-size: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.skill-item.react {
-  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/svgs/brands/react.svg");
-  background-size: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.skill-item.python {
-  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/svgs/brands/python.svg");
-  background-size: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.skill-item.nodejs {
-  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/svgs/brands/node-js.svg");
-  background-size: 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* Hover effect for skill item */
 .skill-item:hover {
-  opacity: 1; /* Full opacity on hover */
-  transform: scale(1.1); /* Slight scale-up effect */
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-/* Create the dark background effect on both sides of the page */
-.skills-container::before,
-.skills-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background-color: #333; /* Dark background */
-  z-index: -1; /* Behind the content */
-}
-
-.skills-container::before {
-  left: 0;
-}
-
-.skills-container::after {
-  right: 0;
-}
-
-/* To make continuous scrolling seamless, duplicate the skill items inside .skills-list */
-.skills-list .skill-item:last-child {
-  margin-right: 0; /* No extra margin for the last item */
-}
-
-/* Responsive design for smaller screens */
+/* Responsive Design */
 @media (max-width: 1024px) {
   .skills-list {
     gap: 15px;
   }
 
   .skill-item {
-    font-size: 1.2rem; /* Smaller skill text size */
+    font-size: 1.2rem;
   }
 
-  .skills h2 {
-    font-size: 2rem; /* Slightly smaller heading */
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
-  .skills-list {
-    gap: 12px;
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 
-  .skill-item {
-    font-size: 1rem; /* Smaller skill text size */
-  }
-
-  .skills h2 {
-    font-size: 1.8rem; /* Slightly smaller heading */
-  }
-}
-
-@media (max-width: 480px) {
   .skills-list {
     gap: 10px;
   }
 
   .skill-item {
-    font-size: 0.9rem; /* Smaller skill text size */
-  }
-
-  .skills h2 {
-    font-size: 1.5rem; /* Further reduced heading size */
+    font-size: 1rem;
   }
 }
