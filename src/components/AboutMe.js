@@ -27,26 +27,6 @@ function AboutMe() {
     { name: 'PHP', icon: 'fab fa-php' },
     { name: 'Python', icon: 'fab fa-python' },
     { name: 'C', icon: 'fas fa-cogs' },  // Using a generic icon for C
-    { name: 'C++', icon: 'fas fa-cogs' },  // Same as C
-
-    // Repeat Again
-
-    { name: 'JavaScript', icon: 'fab fa-js-square' },
-    { name: 'React', icon: 'fab fa-react' },
-    { name: 'Node.js', icon: 'fab fa-node' },
-    { name: 'HTML5', icon: 'fab fa-html5' },
-    { name: 'CSS3', icon: 'fab fa-css3-alt' },
-    { name: 'Java', icon: 'fab fa-java' },
-    { name: 'C#', icon: 'fab fa-cuttlefish' },  // No exact icon for C#, using a close match
-    { name: 'ASP .NET MVC', icon: 'fab fa-microsoft' },  // Placeholder for ASP.NET
-    { name: 'MySQL', icon: 'fas fa-database' },
-    { name: 'SQL', icon: 'fas fa-database' }, // Same icon for SQL and MySQL
-    { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
-    { name: 'jQuery', icon: 'fab fa-jquery' },
-    { name: 'Oracle', icon: 'fab fa-java' },  // Oracle is similar to Java
-    { name: 'PHP', icon: 'fab fa-php' },
-    { name: 'Python', icon: 'fab fa-python' },
-    { name: 'C', icon: 'fas fa-cogs' },  // Using a generic icon for C
     { name: 'C++', icon: 'fas fa-cogs' }  // Same as C
   ];
 
