@@ -33,7 +33,7 @@ function AboutMe() {
   return (
     <section className="about" data-aos="fade-up">
       <div className="hero">
-        <h1>Hi, I'm Jaymin Raval</h1>
+        <h1>I'm Jaymin Raval</h1>
         <p className="tagline">Web Developer | IT Enthusiast</p>
       </div>
 
