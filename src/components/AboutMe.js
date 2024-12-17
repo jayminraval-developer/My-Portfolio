@@ -76,11 +76,7 @@ function AboutMe() {
         <h2>My Skills</h2>
         <div className="skills-list">
           {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="skill-item"
-              data-skill={skill.name}
-            >
+            <div key={index} className="skill-item" data-skill={skill.name}>
               <i className={skill.icon}></i> 
               <p>{skill.name}</p>
             </div>

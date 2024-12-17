@@ -174,83 +174,62 @@ body {
   text-align: center;
   padding: 40px 30px;
   border-radius: 20px;
-  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1); 
-  max-width: 1480px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  background-color: transparent;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  background-color: #2d3a47;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 20px;
 }
 
 .skills-list {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 20px;
-  animation: scrollSkills 8s linear infinite;
-  white-space: nowrap;
-  justify-content: flex-start;
-}
-
-@keyframes scrollSkills {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
+  margin-top: 20px;
 }
 
 .skill-item {
-  color: rgba(34, 45, 205, 0.992);
-  font-size: 1.5rem;
-  font-weight: 600;
-  text-align: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  cursor: pointer;
-  padding: 20px 25px;
-  margin: 0;
-  text-transform: capitalize;
-  font-family: "Arial", sans-serif;
-  display: inline-block;
-  opacity: 0.9;
-  background-color: #ffffff;
-  border-radius: 10px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #3b4d63;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
 .skill-item:hover {
-  opacity: 1;
   transform: scale(1.1);
+  background-color: #ff9800;
+}
+
+.skill-item i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.skill-item p {
+  font-size: 1rem;
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  .skills-list {
-    gap: 15px;
-  }
-
-  .skill-item {
-    font-size: 1.2rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .info-grid {
     grid-template-columns: 1fr;
   }
-
-  .skills-list {
-    gap: 10px;
-  }
-
-  .skill-item {
+  .journey-timeline ul li {
     font-size: 1rem;
+  }
+  .skills-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  .skills h2 {
+    font-size: 1.5rem;
   }
 }
