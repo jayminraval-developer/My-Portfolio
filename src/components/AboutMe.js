@@ -1,13 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './AboutMe.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function AboutMe() {
+  const skillsContainerRef = useRef(null);
+
   useEffect(() => {
     AOS.init({
-      duration: 1500, // animation speed
+      duration: 1600, // Animation speed
     });
+
+    const skillsContainer = skillsContainerRef.current;
+
+    // Duplicate the content to achieve seamless infinite scroll
+    skillsContainer.innerHTML += skillsContainer.innerHTML;
+
+    // Handle manual scroll interruption
+    let isScrolling;
+    const handleScroll = () => {
+      skillsContainer.style.animationPlayState = 'paused';
+      clearTimeout(isScrolling);
+
+      // Resume animation after 1.5 seconds of inactivity
+      isScrolling = setTimeout(() => {
+        skillsContainer.style.animationPlayState = 'running';
+      }, 1500);
+    };
+
+    // Attach the scroll event listener
+    skillsContainer.addEventListener('scroll', handleScroll);
+
+    return () => {
+      // Cleanup event listener on unmount
+      skillsContainer.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const skills = [
@@ -27,63 +54,66 @@ function AboutMe() {
     { name: 'PHP', icon: 'fab fa-php' },
     { name: 'Python', icon: 'fab fa-python' },
     { name: 'C', icon: 'fas fa-cogs' },
-    { name: 'C++', icon: 'fas fa-cogs' }
+    { name: 'C++', icon: 'fas fa-cogs' },
   ];
 
   return (
-    <section className="about" data-aos="fade-up">
-      <div className="hero">
+    <div className="about-me-container">
+      {/* Hero Section */}
+      <section className="hero-section" data-aos="fade-up">
         <h1>I'm Jaymin Raval</h1>
         <p className="tagline">Web Developer | IT Enthusiast</p>
-      </div>
+      </section>
 
-      <div className="intro">
+      {/* Introduction Section */}
+      <section className="intro-section" data-aos="fade-up">
+        <h2>About Me</h2>
         <p>
           I am a final-year Master's student at Hemchandracharya North Gujarat University (HNGU),
           with a passion for coding and building web applications. My journey in technology started with a fascination for computers,
           and it has led me to specialize in Java, web & app development, and software engineering.
         </p>
-      </div>
+      </section>
 
-      <div className="journey-timeline">
-        <ul>
-          {[
-            'About My Journey',
-            '2020-2021: Started studying Computer Science and learned C, C++, HTML5, CSS3, and JavaScript.',
-            '2021-2022: Learned C#, ASP.NET, and PHP, gaining back-end development skills.',
-            '2022-2023: Focused on React.js, Node.js, and full-stack web development.',
-            '2023-2024: Attended a bootcamp on full-stack development, learning advanced web technologies.'
-          ].map((event, index) => (
-            <li key={index}>
-              <div className="timeline-point"></div>
-              {event}
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Journey Section */}
+      <section className="journey-section" data-aos="fade-up">
+        <h2>My Journey</h2>
+        <div className="journey-timeline">
+          <ul>
+            <li><div className="timeline-point"></div> <span>2020-2021:</span> Started studying Computer Science and learned C, C++, HTML5, CSS3, and JavaScript.</li>
+            <li><div className="timeline-point"></div> <span>2021-2022:</span> Learned C#, ASP.NET, and PHP, gaining back-end development skills.</li>
+            <li><div className="timeline-point"></div> <span>2022-2023:</span> Focused on React.js, Node.js, and full-stack web development.</li>
+            <li><div className="timeline-point"></div> <span>2023-2024:</span> Attended a bootcamp on full-stack development, learning advanced web technologies.</li>
+          </ul>
+        </div>
+      </section>
 
-      <div className="personal-info">
+      {/* Contact Information Section */}
+      <section className="contact-section" data-aos="fade-up">
         <h2>Contact Information</h2>
         <div className="info-grid">
-          <div className="info">Email: jaymin.raval@example.com</div>
+          <div className="info">Email: jayminraval57@gmail.com</div>
           <div className="info">Location: Palanpur, India</div>
-          <div className="info">GitHub: github.com/jaymin-raval</div>
-          <div className="info">LinkedIn: linkedin.com/in/jaymin-raval</div>
+          <div className="info">GitHub: jayminraval-developer</div>
+          <div className="info">LinkedIn: jayminraval7046</div>
         </div>
-      </div>
+      </section>
 
-      <div className="skills">
+      {/* Skills Section */}
+      <section className="skills-section" data-aos="fade-up">
         <h2>My Skills</h2>
-        <div className="skills-list">
-          {skills.map((skill, index) => (
-            <div key={index} className="skill-item" data-skill={skill.name}>
-              <i className={skill.icon}></i> 
-              <p>{skill.name}</p>
-            </div>
-          ))}
+        <div className="skills-wrapper">
+          <div className="skills-container" ref={skillsContainerRef}>
+            {skills.map((skill, index) => (
+              <div key={index} className="skill-item">
+                <i className={skill.icon}></i>
+                <p>{skill.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

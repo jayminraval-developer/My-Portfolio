@@ -1,181 +1,219 @@
-/* General Styles for About Section */
-.about {
+/* General Container Styles */
+.about-me-container {
   padding: 40px 20px;
-  background-color: #2d3a47;
+  color: #ecf0f1; /* Light text for contrast */
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Background animation */
 }
 
-.hero {
+/* Background Animation */
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #2d3a47; /* Darker shade */
+  }
+  50% {
+    background-color: #34495e; /* Slightly lighter shade */
+  }
+  100% {
+    background-color: #2d3a47; /* Darker shade */
+  }
+}
+
+/* Section Styles */
+section {
+  margin-bottom: 50px;
+  padding: 30px;
+  background-color: #2b2b3d; /* Dark background for sections */
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  color: #ecf0f1;
+}
+
+/* Hero Section */
+.hero-section {
   text-align: center;
 }
 
-.hero h1 {
+.hero-section h1 {
   font-size: 2.5rem;
-  color: white;
+  color: #ff9800; /* Vibrant orange heading */
 }
 
-.hero .tagline {
+.hero-section .tagline {
   font-size: 1.25rem;
+  color: #f39c12; /* Lighter orange tagline */
+}
+
+/* Intro Section */
+.intro-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 15px;
   color: #ff9800;
 }
 
-/* Personal Info Section */
-.personal-info {
-  margin-top: 40px;
+/* Journey Section */
+.journey-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #eb5718; /* Deep red for contrast */
 }
 
-.personal-info h2 {
-  font-size: 1.75rem;
-  color: white;
+.journey-timeline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.journey-timeline li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  color: #ecf0f1;
+}
+
+.journey-timeline li span {
+  font-weight: bold;
+  color: #ff9800;
+}
+
+.journey-timeline .timeline-point {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: #ff9800;
+  border-radius: 50%;
+}
+
+/* Contact Section */
+.contact-section h2 {
+  font-size: 2rem;
   margin-bottom: 20px;
+  color: #ff9800;
 }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  color: white;
 }
 
 .info {
-  background-color: #3b4d63;
+  background-color: #2d3a47;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  color: #ecf0f1;
 }
 
 /* Skills Section */
-.skills {
-  margin-top: 40px;
+.skills-section {
+  margin: 40px 0;
+  padding: 10px;
   text-align: center;
-  padding: 20px;
-  background-color: #2d3a47;
+  overflow: hidden;
 }
 
-.skills h2 {
-  color: white;
+.skills-section h2 {
   font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff9800;
 }
 
-.skills-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+/* Skills Wrapper for Horizontal Scrolling */
+.skills-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  background-color: #2d3a47;
+  padding: 20px 0;
+}
+
+.skills-container {
+  display: inline-flex;
+  animation: scroll-left 20s linear infinite;
 }
 
 .skill-item {
-  background-color: #3b4d63;
+  background-color: #121212;
   padding: 20px;
-  color: white;
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
-  width: 120px;
-  transition: all 0.3s ease;
-}
-
-.skill-item:hover {
-  background-color: #ff9800;
-  transform: scale(1.1);
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px;
+  color: #fff;
 }
 
 .skill-item i {
   font-size: 2rem;
+  margin-bottom: 10px;
+  color: #ff9800;
 }
 
-.skill-item p {
-  margin-top: 10px;
-  font-size: 1rem;
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
+/* Stop Animation on Hover */
+.skills-wrapper:hover .skills-container {
+  animation-play-state: paused;
+}
 
-  .hero .tagline {
-    font-size: 1rem;
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
   }
-
-  .info-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .info {
-    font-size: 0.9rem;
-  }
-
-  .skills h2 {
-    font-size: 1.5rem;
-  }
-
-  .skills-list {
-    gap: 15px;
+  100% {
+    transform: translateX(-50%);
   }
 }
 
+/* Hide Scrollbar for Aesthetics */
+.skills-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile-Specific Styles */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 1.75rem;
+  body {
+    background-color: #2d3a47;
+    background-image: linear-gradient(135deg, #2d3a47, #34495e);
   }
 
-  .hero .tagline {
-    font-size: 1rem;
+  .about-me-container,
+  .journey-section,
+  .intro-section,
+  .hero-section,
+  .contact-section,
+  .skills-section {
+    color: #ffffff;
   }
 
-  .info-grid {
-    grid-template-columns: 1fr; /* Stack the info vertically on small screens */
+  section {
+    background-color: #34495e;
   }
 
-  .info {
-    font-size: 0.9rem;
-    padding: 12px;
+  .journey-timeline li span {
+    color: #ff9800;
   }
 
-  .skills h2 {
-    font-size: 1.25rem;
-  }
-
-  .skills-list {
-    gap: 10px;
-  }
-
-  .skill-item {
-    width: 100px;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero .tagline {
-    font-size: 0.9rem;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr; /* Stack the info vertically on mobile */
-  }
-
-  .info {
-    font-size: 0.8rem;
-    padding: 10px;
-  }
-
-  .skills h2 {
-    font-size: 1.25rem;
-  }
-
-  .skills-list {
-    gap: 8px;
+  .journey-timeline .timeline-point {
+    background-color: #ff9800;
   }
 
   .skill-item {
-    width: 90px;
-    font-size: 0.8rem;
+    background-color: #121212;
+    color: #ffffff;
   }
 }
