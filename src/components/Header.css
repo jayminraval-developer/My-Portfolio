@@ -1,11 +1,25 @@
 /* Header CSS */
-  .header {
+.header {
   text-align: center;
-  background-color: #282c34; /* Dark background */
+  background-color: #282c34; /* Initial dark background */
   color: white;
   padding: 180px 0;
   position: relative; /* So we can position child elements */
   overflow: hidden; /* To hide the overflow during animations */
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Background animation */
+}
+
+/* Background Animation for header */
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #282c34; /* Dark background */
+  }
+  50% {
+    background-color: #6d0014; /* Maroon color */
+  }
+  100% {
+    background-color: #282c34; /* Dark background */
+  }
 }
 
 /* Profile picture */
@@ -105,7 +119,6 @@
   color: #FE621D; /* Orange color on hover */
 }
 
-
 /* Typing effect for description */
 .description {
   font-size: 1.2rem;
@@ -131,22 +144,4 @@
   50% {
       border-color: transparent;
   }
-}
-
-
-
-@keyframes backgroundAnimation {
-  0% {
-    background-color: #282c34; /* Dark background */
-  }
-  50% {
-    background-color: #6d0014; /* Maroon color */
-  }
-  100% {
-    background-color: #282c34; /* Dark background */
-  }
-}
-
-.header {
-  animation: backgroundAnimation 10s ease-in-out infinite;
 }

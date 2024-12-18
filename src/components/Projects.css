@@ -34,9 +34,16 @@
 /* Project List */
 .project-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory; /* Smooth scroll snapping */
+  padding-left: 10px;
+}
+
+/* Hide scrollbar for WebKit browsers */
+.project-list::-webkit-scrollbar {
+  display: none;
 }
 
 /* Project Card */
@@ -45,7 +52,7 @@
   padding: 20px;
   border-radius: 15px;
   width: 280px;
-  height: 350px;
+  min-height: 350px;
   cursor: pointer;
   text-align: center;
   color: #fff;
@@ -54,8 +61,38 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  scroll-snap-align: start; /* Align each card during scrolling */
 }
 
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  animation: fadeInOut 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+/* Scroll Indicator Animation */
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+/* Hover Effect for Project Card */
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.5);

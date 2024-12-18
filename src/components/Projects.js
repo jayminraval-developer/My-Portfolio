@@ -1,7 +1,6 @@
-// src/components/Projects.js
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaCode, FaLaptopCode, FaBook, FaFilm, FaTimes } from 'react-icons/fa';
-import './Projects.css'; // Ensure you have appropriate CSS styling
+import './Projects.css';
 
 const projects = [
   {
@@ -45,6 +44,8 @@ const projects = [
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const projectListRef = useRef(null);
 
   const handleProjectClick = (project) => {
     setSelectedProject(project);
@@ -54,10 +55,29 @@ function Projects() {
     setSelectedProject(null);
   };
 
+  // Hide the scroll indicator after scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      if (projectListRef.current.scrollLeft > 10) {
+        setShowScrollIndicator(false);
+      }
+    };
+
+    const projectList = projectListRef.current;
+    projectList.addEventListener('scroll', handleScroll);
+
+    return () => projectList.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="projects">
       <h2>My Projects</h2>
-      <div className="project-list">
+
+      {showScrollIndicator && (
+        <span className="scroll-indicator">Scroll to see more projects →</span>
+      )}
+
+      <div className="project-list" ref={projectListRef}>
         {projects.map((project, index) => (
           <div
             key={index}

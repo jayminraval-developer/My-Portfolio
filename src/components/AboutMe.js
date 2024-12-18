@@ -59,20 +59,21 @@ function AboutMe() {
 
   return (
     <div className="about-me-container">
-      {/* Hero Section */}
-      <section className="hero-section" data-aos="fade-up">
-        <h1>I'm Jaymin Raval</h1>
-        <p className="tagline">Web Developer | IT Enthusiast</p>
-      </section>
+      {/* Combined Hero and Intro Section */}
+      <section className="combined-section" data-aos="fade-up">
+        <div className="hero-section">
+          <h1>I'm Jaymin Raval</h1>
+          <p className="tagline">Web Developer | IT Enthusiast</p>
+        </div>
 
-      {/* Introduction Section */}
-      <section className="intro-section" data-aos="fade-up">
-        <h2>About Me</h2>
-        <p>
-          I am a final-year Master's student at Hemchandracharya North Gujarat University (HNGU),
-          with a passion for coding and building web applications. My journey in technology started with a fascination for computers,
-          and it has led me to specialize in Java, web & app development, and software engineering.
-        </p>
+        <div className="intro-section">
+          <h2>About Me</h2>
+          <p>
+            I am a final-year Master's student at Hemchandracharya North Gujarat University (HNGU),
+            with a passion for coding and building web applications. My journey in technology started with a fascination for computers,
+            and it has led me to specialize in Java, web & app development, and software engineering.
+          </p>
+        </div>
       </section>
 
       {/* Journey Section */}
