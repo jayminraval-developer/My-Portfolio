@@ -1,120 +1,120 @@
-import React, { useEffect, useRef } from 'react';
-import './AboutMe.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useState, useRef, useEffect } from 'react';
+import { FaCode, FaLaptopCode, FaBook, FaFilm, FaTimes } from 'react-icons/fa';
+import './Projects.css';
 
-function AboutMe() {
-  const skillsContainerRef = useRef(null);
+const projects = [
+  {
+    title: 'Portfolio Website',
+    description: 'This portfolio website where you can see my work and skills.',
+    icon: <FaLaptopCode size={40} color="#007bff" />,
+    fullDescription: 'A dynamic portfolio website built using React.js.',
+    githubLink: 'https://github.com/yourusername/portfolio',
+    liveDemoLink: 'https://your-portfolio-live.com',
+  },
+  {
+    title: 'Online Attendance System',
+    description: 'A Java-based system to manage attendance for schools and colleges.',
+    icon: <FaCode size={40} color="#28a745" />,
+    fullDescription: 'Manage student attendance using Java and MySQL.',
+    githubLink: 'https://github.com/yourusername/attendance-system',
+  },
+  {
+    title: 'Library Management System',
+    description: 'A Java-based system for managing books in a library.',
+    icon: <FaBook size={40} color="#ffc107" />,
+    fullDescription: 'Helps libraries manage book checkouts, returns, and availability.',
+    githubLink: 'https://github.com/yourusername/library-management',
+  },
+  {
+    title: 'Blog Website',
+    description: 'A dynamic blog platform where users can post and comment.',
+    icon: <FaCode size={40} color="#dc3545" />,
+    fullDescription: 'Built with PHP and MySQL for blogging and commenting.',
+    githubLink: 'https://github.com/yourusername/blog-website',
+  },
+  {
+    title: 'The Movie Review App (IMDb Clone)',
+    description: 'A movie review app using React and ASP.NET MVC.',
+    icon: <FaFilm size={40} color="#f39c12" />,
+    fullDescription: 'Rate and review movies using React.js frontend and ASP.NET MVC backend.',
+    githubLink: 'https://github.com/yourusername/movie-review-app',
+    liveDemoLink: 'https://your-movie-app-live.com',
+  },
+];
 
+function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+  const projectListRef = useRef(null);
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+  };
+
+  // Hide the scroll indicator after scrolling
   useEffect(() => {
-    AOS.init({
-      duration: 1600, // Animation speed
-    });
-
-    const skillsContainer = skillsContainerRef.current;
-
-    // Duplicate the content to achieve seamless infinite scroll
-    skillsContainer.innerHTML += skillsContainer.innerHTML;
-
-    // Handle manual scroll interruption
-    let isScrolling;
     const handleScroll = () => {
-      skillsContainer.style.animationPlayState = 'paused';
-      clearTimeout(isScrolling);
-
-      // Resume animation after 1.5 seconds of inactivity
-      isScrolling = setTimeout(() => {
-        skillsContainer.style.animationPlayState = 'running';
-      }, 1500);
+      if (projectListRef.current.scrollLeft > 10) {
+        setShowScrollIndicator(false);
+      }
     };
 
-    // Attach the scroll event listener
-    skillsContainer.addEventListener('scroll', handleScroll);
+    const projectList = projectListRef.current;
+    projectList.addEventListener('scroll', handleScroll);
 
-    return () => {
-      // Cleanup event listener on unmount
-      skillsContainer.removeEventListener('scroll', handleScroll);
-    };
+    return () => projectList.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const skills = [
-    { name: 'JavaScript', icon: 'fab fa-js-square' },
-    { name: 'React', icon: 'fab fa-react' },
-    { name: 'Node.js', icon: 'fab fa-node' },
-    { name: 'HTML5', icon: 'fab fa-html5' },
-    { name: 'CSS3', icon: 'fab fa-css3-alt' },
-    { name: 'Java', icon: 'fab fa-java' },
-    { name: 'C#', icon: 'fab fa-cuttlefish' },
-    { name: 'ASP .NET MVC', icon: 'fab fa-microsoft' },
-    { name: 'MySQL', icon: 'fas fa-database' },
-    { name: 'SQL', icon: 'fas fa-database' },
-    { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
-    { name: 'jQuery', icon: 'fab fa-jquery' },
-    { name: 'Oracle', icon: 'fab fa-java' },
-    { name: 'PHP', icon: 'fab fa-php' },
-    { name: 'Python', icon: 'fab fa-python' },
-    { name: 'C', icon: 'fas fa-cogs' },
-    { name: 'C++', icon: 'fas fa-cogs' },
-  ];
-
   return (
-    <div className="about-me-container">
-      {/* Hero Section */}
-      <section className="hero-section" data-aos="fade-up">
-        <h1>I'm Jaymin Raval</h1>
-        <p className="tagline">Web Developer | IT Enthusiast</p>
-      </section>
+    <section className="projects">
+      <h2>My Projects</h2>
 
-      {/* Introduction Section */}
-      <section className="intro-section" data-aos="fade-up">
-        <h2>About Me</h2>
-        <p>
-          I am a final-year Master's student at Hemchandracharya North Gujarat University (HNGU),
-          with a passion for coding and building web applications. My journey in technology started with a fascination for computers,
-          and it has led me to specialize in Java, web & app development, and software engineering.
-        </p>
-      </section>
+      {showScrollIndicator && (
+        <span className="scroll-indicator">Scroll to see more projects →</span>
+      )}
 
-      {/* Journey Section */}
-      <section className="journey-section" data-aos="fade-up">
-        <h2>My Journey</h2>
-        <div className="journey-timeline">
-          <ul>
-            <li><div className="timeline-point"></div> <span>2020-2021:</span> Started studying Computer Science and learned C, C++, HTML5, CSS3, and JavaScript.</li>
-            <li><div className="timeline-point"></div> <span>2021-2022:</span> Learned C#, ASP.NET, and PHP, gaining back-end development skills.</li>
-            <li><div className="timeline-point"></div> <span>2022-2023:</span> Focused on React.js, Node.js, and full-stack web development.</li>
-            <li><div className="timeline-point"></div> <span>2023-2024:</span> Attended a bootcamp on full-stack development, learning advanced web technologies.</li>
-          </ul>
-        </div>
-      </section>
+      <div className="project-list" ref={projectListRef}>
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="project-card"
+            onClick={() => handleProjectClick(project)}
+          >
+            <div className="project-icon">{project.icon}</div>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <button className="view-project-btn">View Project</button>
+          </div>
+        ))}
+      </div>
 
-      {/* Contact Information Section */}
-      <section className="contact-section" data-aos="fade-up">
-        <h2>Contact Information</h2>
-        <div className="info-grid">
-          <div className="info">Email: jayminraval57@gmail.com</div>
-          <div className="info">Location: Palanpur, India</div>
-          <div className="info">GitHub: jayminraval-developer</div>
-          <div className="info">LinkedIn: jayminraval7046</div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="skills-section" data-aos="fade-up">
-        <h2>My Skills</h2>
-        <div className="skills-wrapper">
-          <div className="skills-container" ref={skillsContainerRef}>
-            {skills.map((skill, index) => (
-              <div key={index} className="skill-item">
-                <i className={skill.icon}></i>
-                <p>{skill.name}</p>
-              </div>
-            ))}
+      {selectedProject && (
+        <div className="project-modal" onClick={closeModal}>
+          <div className="project-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closeModal}>
+              <FaTimes size={20} />
+            </button>
+            <h3>{selectedProject.title}</h3>
+            <p>{selectedProject.fullDescription}</p>
+            {selectedProject.githubLink && (
+              <a href={selectedProject.githubLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                View on GitHub
+              </a>
+            )}
+            {selectedProject.liveDemoLink && (
+              <a href={selectedProject.liveDemoLink} className="project-link" target="_blank" rel="noopener noreferrer">
+                Live Demo
+              </a>
+            )}
           </div>
         </div>
-      </section>
-    </div>
+      )}
+    </section>
   );
 }
 
-export default AboutMe;
+export default Projects;
