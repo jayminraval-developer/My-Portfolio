@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './Contact.css'; // Your CSS file
+import './Contact.css';
 import emailjs from 'emailjs-com';
 
 // Initialize EmailJS with your Public Key (User ID)
-emailjs.init('VqkhNoPuFGjwRSDOsnqgq');  // Replace with your actual Public Key (User ID)
+emailjs.init('VqkhNoPuFGjwRSDOsnqgq');
 
 const Contact = () => {
-  // Declare state variables for form data and status message
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -16,7 +15,6 @@ const Contact = () => {
 
   const [formStatus, setFormStatus] = useState('');
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -25,11 +23,9 @@ const Contact = () => {
     }));
   };
 
-  // Send the form data via EmailJS
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Prepare the template parameters
     const templateParams = {
       firstName: formData.firstName,
       lastName: formData.lastName,
@@ -37,23 +33,19 @@ const Contact = () => {
       message: formData.message,
     };
 
-    // EmailJS setup
-    const serviceID = 'service_0zjyaxe';  // Your actual Service ID from EmailJS
-    const templateID = 'template_ddwwdr2';  // Your actual Template ID from EmailJS
-    const userID = 'CC8ccmncBPvxDw1ey';  // Your public key (User ID) from EmailJS
+    const serviceID = 'service_0zjyaxe';
+    const templateID = 'template_ddwwdr2';
+    const userID = 'CC8ccmncBPvxDw1ey';
 
-    // Send email via EmailJS
     emailjs
       .send(serviceID, templateID, templateParams, userID)
       .then(
         (result) => {
           setFormStatus('Your message has been sent successfully!');
-          // Set timeout to hide the error message after 5 seconds
           setTimeout(() => {
-            setFormStatus(''); // Clear the status after 5 seconds
-          }, 5000); // 5000ms = 5 seconds
+            setFormStatus('');
+          }, 5000);
 
-          // Clear the form fields
           setFormData({
             firstName: '',
             lastName: '',
@@ -62,72 +54,79 @@ const Contact = () => {
           });
         },
         (error) => {
-          console.error("EmailJS Error: ", error.text);  // Log the full error message to the console
+          console.error('EmailJS Error:', error.text);
           setFormStatus('Oops! Something went wrong. Please try again later.');
-
-          // Set timeout to hide the error message after 5 seconds
           setTimeout(() => {
-            setFormStatus(''); // Clear the status after 5 seconds
-          }, 5000); // 5000ms = 5 seconds
-
+            setFormStatus('');
+          }, 5000);
         }
       );
-};
-
+  };
 
   return (
     <div className="contact">
       <h2>Contact Us</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            required
-          />
+      <div className="contact-container">
+        {/* Contact Information Section */}
+        <div className="contact-info">
+          <h3>Get in Touch</h3>
+          <p><i className="fas fa-map-marker-alt"></i> At - Post Basu, Near Ramji Temple, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Near Palanpur City, Gujarat, India</p>
+          <p><i className="fas fa-envelope"></i> jayminraval57@gmail.com</p>
+          <p><i className="fas fa-envelope"></i> jayminraval104@gmail.com</p>
+          <p><i className="fas fa-phone"></i> +91 7046957063</p>
         </div>
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="submit-btn">
-          Send Message
-        </button>
-      </form>
 
-      {/* Display the form status */}
+        {/* Contact Form Section */}
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-group">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              value={formData.message}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="submit-btn">
+            Send Message
+          </button>
+        </form>
+      </div>
       {formStatus && <p className="form-status">{formStatus}</p>}
     </div>
   );
